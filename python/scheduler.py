@@ -39,7 +39,7 @@ for interval in s2.schedule[1]:
 	ilist.insert(interval[0],interval[1],s2,1)
 	
 print "Results"
-start = 700
+start = 730
 end = 800
 overlap = find(start, end , tuesdayTree)
 #print '(%s, %s) -> %s' % (start, end,  overlap[0][2].code + " hora: "+ str(overlap[0][0]) + "," +str(overlap[0][1]) if len(overlap) > 0 else None)
