@@ -1,6 +1,7 @@
 from copy import deepcopy
 from quicksect import IntervalNode
 from classroom import Classroom
+from intervals import IntervalList
 
 def find(start, end, tree):
 	'''Returns a list with the overlapping intervals'''
@@ -29,14 +30,26 @@ for interval in s2.schedule[1]:
 	mondayTree = mondayTree.insert( interval[0],interval[1],other=s2 )
 
 tuesdayTree = deepcopy(mondayTree)
+ilist = IntervalList(5)
+#interval list
+for interval in s1.schedule[1]:
+	ilist.insert(interval[0],interval[1],s1,1)
+
+for interval in s2.schedule[1]:
+	ilist.insert(interval[0],interval[1],s2,1)
 	
 print "Results"
-start = 1400
-end = 1500
+start = 700
+end = 800
 overlap = find(start, end , tuesdayTree)
 #print '(%s, %s) -> %s' % (start, end,  overlap[0][2].code + " hora: "+ str(overlap[0][0]) + "," +str(overlap[0][1]) if len(overlap) > 0 else None)
 print '(%s, %s) -> %s' % (start, end,  overlap)	
 
 overlap = find(start, end , mondayTree)
 #print '(%s, %s) -> %s' % (start, end,  overlap[0][2].code + " hora: "+ str(overlap[0][0]) + "," +str(overlap[0][1]) if len(overlap) > 0 else None)
+print '(%s, %s) -> %s' % (start, end,  overlap)
+
+print "With interval list"
+
+overlap = ilist.find(start, end , 1)
 print '(%s, %s) -> %s' % (start, end,  overlap)
