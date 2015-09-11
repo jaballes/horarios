@@ -1,3 +1,4 @@
+from copy import deepcopy
 from quicksect import IntervalNode
 from classroom import Classroom
 
@@ -26,10 +27,16 @@ for interval in s1.schedule[1][1:]:
 for interval in s2.schedule[1]:
 	#print interval
 	mondayTree = mondayTree.insert( interval[0],interval[1],other=s2 )
+
+tuesdayTree = deepcopy(mondayTree)
 	
 print "Results"
 start = 1400
 end = 1500
-overlap = find(start, end , mondayTree)
+overlap = find(start, end , tuesdayTree)
 #print '(%s, %s) -> %s' % (start, end,  overlap[0][2].code + " hora: "+ str(overlap[0][0]) + "," +str(overlap[0][1]) if len(overlap) > 0 else None)
 print '(%s, %s) -> %s' % (start, end,  overlap)	
+
+overlap = find(start, end , mondayTree)
+#print '(%s, %s) -> %s' % (start, end,  overlap[0][2].code + " hora: "+ str(overlap[0][0]) + "," +str(overlap[0][1]) if len(overlap) > 0 else None)
+print '(%s, %s) -> %s' % (start, end,  overlap)
