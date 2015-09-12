@@ -13,15 +13,23 @@ class IntervalList:
 		for interval in self.levels[level]:
 			s, e, obj = interval
 			if s <= start <= end <= e:
-				res.append((interval,idx))
+				res.append(interval)
 		return res
 	def remove(self, start, end, obj, level):
 		idx = 0
 		for interval in self.levels[level]:
 			s, e, to = interval
 			if to == obj:  # same object
-				del self.levels[level][idx]
 				if s <= start <= end <= e:
-					
-			idx += 1
+					del self.levels[level][idx]
+					bi = start - s
+					en = e - end
+					if bi > 0:
+						print "bi" 
+						self.insert(s, start, obj, level)
+					if en > 0:
+						print "en"
+						self.insert(end, e, obj, level)
+			idx +=1
+
 		

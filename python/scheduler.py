@@ -53,3 +53,10 @@ print "With interval list"
 
 overlap = ilist.find(start, end , 1)
 print '(%s, %s) -> %s' % (start, end,  overlap)
+overlap = ilist.remove(start, end , overlap[0][2],1)
+overlap = ilist.find(start, end , 1)
+print '(%s, %s) -> %s' % (start, end,  overlap)
+start = 830
+end = 900
+overlap = ilist.find(start, end , 1)
+print '(%s, %s) -> %s' % (start, end,  overlap)
